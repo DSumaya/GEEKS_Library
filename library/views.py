@@ -1,11 +1,8 @@
-from lib2to3.fixes.fix_input import context
-
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 import datetime
 from . import models
 
-#Список книг
 def book_list(request):
     if request.method == 'GET':
         books_list = models.Books.objects.all().order_by('-id')
@@ -18,11 +15,6 @@ def book_detail(request, id):
         book_id = get_object_or_404(models.Books, id= id)
         context = {'book_id': book_id}
         return render(request, template_name= 'book_detail.html', context=context)
-
-
-
-
-
 
 
 
