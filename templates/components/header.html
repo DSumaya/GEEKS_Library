@@ -1,4 +1,3 @@
-
 <head>
     <meta charset="UTF-8">
     <title>Geek Book</title>
@@ -25,7 +24,7 @@
                     <a class="nav-link active" aria-current="page" href="" style="color: yellow;">Главная</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'all_books' %}" style="color: yellow;">Хэш теги</a>
+                    <a class="nav-link" href="#" style="color: yellow;">Хэш теги</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -33,11 +32,11 @@
                         Мои заказы
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Добавить</a></li>
+                        <li><a class="dropdown-item" href="{% url 'basket_create' %}">Добавить</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="#">Корзина</a></li>
+                        <li><a class="dropdown-item" href="{% url 'basket_list' %}">Корзина</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

@@ -1,0 +1,22 @@
+{% load static %}
+{% include 'components/header.html' %}
+<link rel="stylesheet" href="{% static 'css/book.css' %}">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crete_Basket</title>
+</head>
+<body>
+<form action="/create_basket/" method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit"></button>
+
+</form>
+
+</body>
+</html>
+
+{% include 'components/footer.html' %}

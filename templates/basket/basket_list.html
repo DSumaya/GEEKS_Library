@@ -1,0 +1,28 @@
+{% load static %}
+{% include 'components/header.html' %}
+<link rel="stylesheet" href="{% static 'css/book.css' %}">
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Basket List</title>
+</head>
+<body>
+<ul>
+  {% for i in basket_list %}
+  <li>
+    <h1>{{ i.book }}</h1>
+    <p>{{ i.pay }}</p>
+    <button><a href="/basket_list/{{ i.id }}/delete/">Удалить</a></button>
+    <button><a href="/basket_list/{{ i.id }}/update/">Изменить</a></button>
+    <button><a href="">Купить</a></button>
+    <button><a href="/basket_list/{{ i.id }}/">Подробнее</a></button>
+  </li>
+  {% endfor %}
+</ul>
+</body>
+</html>
+
+{% include 'components/footer.html' %}

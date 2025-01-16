@@ -1,0 +1,23 @@
+{% load static %}
+{% include 'components/header.html' %}
+<link rel="stylesheet" href="{% static 'css/book.css' %}">
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basket Detail</title>
+</head>
+<body>
+<h1>{{ basket_id.book }}</h1>
+<p>{{ basket_id.quantity }}</p>
+<p>{{ basket_id.total_price }}</p>
+<p>{{ basket_id.pay }}</p>
+<p>{{ basket_id.created_at }}</p>
+<p>{{ basket_id.updated_at }}</p>
+</body>
+
+</html>
+
+{% include 'components/footer.html' %}
