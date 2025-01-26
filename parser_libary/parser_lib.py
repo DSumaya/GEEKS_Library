@@ -43,4 +43,6 @@ def parsing():
         return library_list2
     else:
             raise Exception('Error in parsing')
-print(parsing())
+#print(parsing())
+
+

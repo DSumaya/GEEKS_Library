@@ -29,7 +29,8 @@ INSTALLED_APPS = [
     'library',
     'hashtags',
     'basket',
-    'parser_libary'
+    'parser_libary',
+    'users',
 
 
 ]
@@ -42,6 +43,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'users.middleware.ExperienceClubMiddleware',
 ]
 
 ROOT_URLCONF = 'main.urls'
