@@ -1,8 +1,11 @@
+from crypt import methods
 
 from django.shortcuts import render, redirect, get_object_or_404
 from. import  models, forms
 from django.views import generic
-
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
+from django.core.cache import cache
 
 
 
@@ -31,13 +34,19 @@ class BasketCreateView(generic.CreateView):
 
 
 #creat basket list, update, delete
+@method_decorator(cache_page(60*15), name = 'dispatch')
 class BasketListView(generic.ListView):
     template_name = 'basket/basket_list.html'
     context_object_name = 'basket_list'
     model = models.BasketModel
 
     def get_queryset(self):
-        return self.model.objects.all().order_by('-id')
+        baskets = cache.get('basket')
+        if not baskets:
+            baskets = self.model.objects.all().order_by('-id')
+            cache.set('baskets', baskets, 60*15)
+
+
 
 # def basket_list_view(request):
 #     if request.method == 'GET':

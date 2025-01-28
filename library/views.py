@@ -1,7 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 import datetime
-from django.template.defaultfilters import title
 from . import models
 from django.views import generic
 
@@ -19,20 +18,25 @@ class SearchView(generic.ListView):
 
 
 
+# class BookListView(generic.ListView):
+#     template_name = 'book.html'
+#     context_object_name = 'book_list'
+#     model = models.Books
+#
+#     def get_queryset(self):
+#         return self.model.objects.all().order_by('-id')
 
-class BookListView(generic.ListView):
-    template_name = 'book.html'
-    context_object_name = 'book_list'
-    model = models.Books
 
-    def get_queryset(self):
-        return self.model.objects.all().order_by('-id')
 
-# def book_list(request):
-#     if request.method == 'GET':
-#         books_list = models.Books.objects.all().order_by('-id')
-#         context = {'book_list': books_list}
-#         return render(request, template_name='book.html', context=context)
+def book_list(request):
+    if request.method == 'GET':
+        books_list = models.Books.objects.all().order_by('-id')
+        slider = models.Slider.objects.all()
+        context = {
+            'book_list': books_list,
+            'slider': slider
+        }
+        return render(request, template_name='book.html', context=context)
 
 
 
