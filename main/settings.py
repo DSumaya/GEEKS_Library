@@ -1,20 +1,24 @@
 from pathlib import Path
 import os
 
+from django.conf.global_settings import STATIC_ROOT
+from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
+load_dotenv()
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-ravl+-5wr(_3a*)23=(nvx8to6#7fvt2e8$knros=yw!(5ca#y'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if os.getenv('DEBUG') == 'on':
+    DEBUG = True
+else:
+    DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -31,6 +35,7 @@ INSTALLED_APPS = [
     'basket',
     'parser_libary',
     'users',
+    'recipe',
 
 
 ]
@@ -113,6 +118,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR / "media")
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
